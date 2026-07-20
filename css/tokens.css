@@ -1,0 +1,47 @@
+/* ============================================================
+   TOKENS — A ÚNICA FONTE DA VERDADE DO VISUAL
+   ------------------------------------------------------------
+   Mudou uma cor aqui, muda no site inteiro. NUNCA escreva um
+   código de cor (#xxxxxx) fora deste arquivo.
+   ============================================================ */
+
+:root{
+  /* --- Cores: retiradas pixel a pixel dos logos WSS --- */
+  --void:#04070E;          /* preto espacial (fundo do logo Labs) */
+  --deep:#070C18;          /* fundo alternativo, um tom acima     */
+  --navy:#0B183A;          /* azul marinho (fundo do Cripto Ctrl) */
+  --blue:#1F65BF;          /* azul da órbita externa              */
+  --sky:#3893D2;           /* azul claro                          */
+  --cyan:#57CFD4;          /* turquesa — cor de destaque/links    */
+  --lime:#A6EC72;          /* verde — status "no ar"              */
+
+  --ink:#E9EEF9;           /* texto principal    */
+  --ink-soft:#B5C1D8;      /* texto de apoio     */
+  --mute:#8391AE;          /* texto secundário   */
+  --line:rgba(120,160,220,.13);  /* bordas e divisórias */
+
+  --grad:linear-gradient(100deg,#1F65BF 0%,#57CFD4 52%,#A6EC72 100%);
+
+  /* --- Tipografia --- */
+  --font-display:'Sora',system-ui,sans-serif;      /* títulos  */
+  --font-body:'Inter',system-ui,sans-serif;        /* texto    */
+  --font-mono:'JetBrains Mono',ui-monospace,monospace; /* rótulos */
+
+  /* --- Espaçamento e medidas --- */
+  --shell:min(1180px,calc(100% - 48px)); /* largura útil da página */
+  --gap:20px;
+  --section-y:110px;       /* respiro vertical entre seções */
+  --radius:20px;
+  --radius-sm:12px;
+
+  /* --- Movimento --- */
+  --ease:cubic-bezier(.2,.7,.3,1);
+  --speed:.3s;
+}
+
+@media(max-width:900px){
+  :root{
+    --shell:calc(100% - 36px);
+    --section-y:78px;
+  }
+}

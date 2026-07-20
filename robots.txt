@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wsslabs.com.br/sitemap.xml

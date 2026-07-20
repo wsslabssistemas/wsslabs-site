@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-base=".">
+<!-- ============================================================
+     PÁGINA INICIAL
+     Este arquivo contém APENAS conteúdo e "pontos de montagem"
+     (data-wss="..."). Estilo mora em /css. Programa mora em /js.
+     Lista de produtos mora em /js/data/sistemas.js.
+     ============================================================ -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>WSS Labs — Laboratório de sistemas</title>
+<meta name="description" content="A WSS Labs é um laboratório de software. Estudamos um problema até o fim e entregamos um sistema que funciona no dia a dia. Criadores do WSS Cripto Control.">
+<link rel="canonical" href="https://wsslabs.com.br/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="WSS Labs — Laboratório de sistemas">
+<meta property="og:description" content="Estudamos um problema até o fim e entregamos um sistema que funciona no dia a dia.">
+<meta property="og:image" content="assets/marcas/labs-cena.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#04070E">
+
+<link rel="icon" type="image/png" href="assets/marcas/favicon.png">
+<link rel="apple-touch-icon" href="assets/marcas/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- A ORDEM DOS CSS IMPORTA: do mais geral para o mais específico.
+     O ?v= no fim força o navegador a baixar a versão nova quando
+     você publicar uma alteração. Suba o número a cada mudança. -->
+<link rel="stylesheet" href="css/tokens.css?v=4">
+<link rel="stylesheet" href="css/base.css?v=4">
+<link rel="stylesheet" href="css/layout.css?v=4">
+<link rel="stylesheet" href="css/components.css?v=4">
+<link rel="stylesheet" href="css/pages/home.css?v=4">
+</head>
+
+<body id="topo">
+
+<!-- TOPO — desenhado por js/layout.js -->
+<header class="nav" data-wss="nav"></header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <canvas class="hero__grid" data-wss="gravity" aria-hidden="true"></canvas>
+
+    <div class="hero__in">
+      <div>
+        <p class="eyebrow rv">Laboratório de sistemas · Brasil</p>
+        <h1 class="rv">A gente estuda o problema<br>até o fim. Aí <span class="grad-text">constrói</span>.</h1>
+        <p class="hero__lead rv">A WSS Labs é um laboratório de software. Não entregamos protótipo bonito: entregamos sistema que aguenta o uso de todo dia — com login, nuvem, cobrança e alguém do outro lado quando quebra.</p>
+        <div class="btn-row rv">
+          <a class="btn btn--primary" href="#sistemas">Ver os sistemas</a>
+          <a class="btn btn--ghost" href="#contato">Falar com o laboratório</a>
+        </div>
+      </div>
+
+      <div class="hero__visual rv">
+        <div class="hero__halo"></div>
+        <video src="assets/video/logo-animado.mp4" autoplay muted loop playsinline
+               aria-label="Logotipo animado da WSS Labs"></video>
+      </div>
+    </div>
+
+    <div class="hero__hint" aria-hidden="true"><span>role</span><i></i></div>
+  </section>
+
+  <!-- ============ FAIXA DE NÚMEROS ============ -->
+  <div class="strip">
+    <div class="strip__in">
+      <div class="strip__i"><b data-wss="conta-no-ar">1</b><span>sistema em produção</span></div>
+      <div class="strip__i"><b>5</b><span>corretoras integradas</span></div>
+      <div class="strip__i"><b>2</b><span>regimes fiscais tratados</span></div>
+      <div class="strip__i"><b>100%</b><span>dados isolados por usuário</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SISTEMAS ============ -->
+  <section class="section" id="sistemas">
+    <div class="shell">
+      <div class="section__head rv">
+        <p class="eyebrow">O que já está no ar</p>
+        <h2>Sistemas da WSS Labs</h2>
+        <p>Cada produto nasce de um problema que a gente viu de perto, viveu e não achou resolvido em lugar nenhum.</p>
+      </div>
+
+      <!-- Cards desenhados por js/sistemas.js a partir de js/data/sistemas.js -->
+      <div class="sys-list" data-wss="sistemas"></div>
+    </div>
+  </section>
+
+  <!-- ============ MÉTODO ============ -->
+  <section class="section" id="metodo">
+    <div class="shell">
+      <div class="section__head rv">
+        <p class="eyebrow">Método</p>
+        <h2>Como um sistema nasce aqui</h2>
+        <p>Nesta ordem, sempre. Pular etapa é o que produz software que ninguém usa.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step rv">
+          <span class="step__n">01</span>
+          <h3>Entender a regra</h3>
+          <p>Antes de escrever qualquer linha, aprendemos a regra do negócio. No Cripto Control isso significou ler a Lei 14.754 e a IN 1.888 inteiras.</p>
+        </div>
+        <div class="step rv">
+          <span class="step__n">02</span>
+          <h3>Construir o menor pedaço útil</h3>
+          <p>A primeira versão precisa resolver alguma coisa de verdade. Recurso que não resolve nada fica de fora.</p>
+        </div>
+        <div class="step rv">
+          <span class="step__n">03</span>
+          <h3>Testar com quem vai usar</h3>
+          <p>Uso real, dado real, no celular e no computador. É aqui que a maior parte das ideias bonitas cai.</p>
+        </div>
+        <div class="step rv">
+          <span class="step__n">04</span>
+          <h3>Publicar e continuar</h3>
+          <p>Domínio, nuvem, login, cobrança e manutenção. Publicar é o começo do sistema, não o fim do projeto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOB MEDIDA ============ -->
+  <section class="section" id="sobmedida">
+    <div class="shell">
+      <div class="section__head rv">
+        <p class="eyebrow">Para empresas</p>
+        <h2>Sistema sob medida</h2>
+        <p>Além dos produtos próprios, o laboratório constrói para quem já sabe onde dói.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card rv"><h3>Sistema do zero</h3><p>Do desenho da regra até o sistema no ar, com login, banco de dados e acesso pelo celular.</p></div>
+        <div class="card rv"><h3>Integração e automação</h3><p>Conectar sistemas que hoje não se falam. APIs, importação de CSV, PDF e e-mail — o que existir, a gente traz.</p></div>
+        <div class="card rv"><h3>Sair da planilha</h3><p>Aquela planilha que só uma pessoa entende vira um sistema com histórico, permissão e backup.</p></div>
+        <div class="card rv"><h3>Publicar e manter</h3><p>Hospedagem, domínio, segurança, cobrança recorrente e suporte depois que entra no ar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ O SÍMBOLO ============ -->
+  <section class="section" id="simbolo">
+    <div class="shell symbol">
+      <img class="rv" src="assets/marcas/labs-cena.jpeg" loading="lazy"
+           alt="Logotipo da WSS Labs: um buraco negro com disco de acreção azul, turquesa e verde sobre uma malha de espaço curvado">
+
+      <div class="symbol__text rv">
+        <p class="eyebrow">O símbolo</p>
+        <h2>Um centro gravitacional de inovação</h2>
+        <p>O buraco negro não foi escolhido por ser bonito. Ele descreve como o laboratório trabalha: atrair problemas complexos, aguentar a profundidade técnica que eles exigem e devolver algo com forma.</p>
+        <dl>
+          <div><dt>O núcleo</dt><dd>Profundidade técnica e poder de transformação — o ponto onde ideia, tecnologia e criatividade convergem.</dd></div>
+          <div><dt>As órbitas</dt><dd>Fluxos de dados e energia. Azul, turquesa e verde: tecnologia, energia e crescimento — as mesmas cores de todos os produtos WSS.</dd></div>
+          <div><dt>O brilho lateral</dt><dd>O instante em que a ideia nasce e se expande. Descoberta, não decoração.</dd></div>
+          <div><dt>A malha curva</dt><dd>Gravidade e atração: uma empresa que atrai soluções e distorce os limites da tecnologia.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTATO ============ -->
+  <section class="section" id="contato">
+    <div class="shell">
+      <div class="contact rv">
+        <p class="eyebrow">Contato</p>
+        <h2>Conta pra gente onde <span class="grad-text">dói</span>.</h2>
+        <p>Se você tem um processo travado, uma planilha impossível ou uma ideia de produto, a primeira conversa é de graça e serve pra entender se dá pé.</p>
+        <!-- Botões vêm de js/data/site.js — não repita o contato aqui -->
+        <div class="btn-row" data-wss="contato"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- RODAPÉ — desenhado por js/layout.js -->
+<footer class="footer" data-wss="footer"></footer>
+
+<!-- A ORDEM DOS SCRIPTS IMPORTA:
+     1) core     cria o WSS
+     2) data     enche o WSS de conteúdo
+     3) módulos  registram o que sabem fazer
+     4) main     liga tudo, com proteção contra erro -->
+<script src="js/core.js?v=4"></script>
+<script src="js/data/site.js?v=4"></script>
+<script src="js/data/sistemas.js?v=4"></script>
+<script src="js/layout.js?v=4"></script>
+<script src="js/sistemas.js?v=4"></script>
+<script src="js/reveal.js?v=4"></script>
+<script src="js/gravity.js?v=4"></script>
+<script src="js/main.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/* ============================================================
+   LAYOUT — a moldura que se repete em TODAS as páginas:
+   topo (nav), cabeçalho de seção e rodapé.
+   ============================================================ */
+
+/* ---------- TOPO ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  backdrop-filter:blur(14px);
+  background:rgba(4,7,14,.55);
+  border-bottom:1px solid transparent;
+  transition:border-color var(--speed),background var(--speed);
+}
+.nav.is-stuck{border-bottom-color:var(--line);background:rgba(4,7,14,.82)}
+
+.nav__in{
+  width:var(--shell);margin:0 auto;height:70px;
+  display:flex;align-items:center;gap:32px;
+}
+
+.brand{
+  display:flex;align-items:center;gap:11px;
+  font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:.01em;
+}
+.brand img{
+  height:30px;width:auto;flex:none;
+  filter:drop-shadow(0 0 12px rgba(87,207,212,.45));
+  transition:filter var(--speed);
+}
+.brand:hover img{filter:drop-shadow(0 0 18px rgba(87,207,212,.8))}
+.brand small{font-weight:400;font-size:17px;color:var(--cyan)}
+
+.nav__links{display:flex;gap:28px;margin-left:auto;font-size:14.5px;color:var(--mute)}
+.nav__links a{transition:color .2s}
+.nav__links a:hover{color:var(--ink)}
+
+.nav__burger{display:none;margin-left:auto;background:none;border:0;color:var(--ink);font-size:22px;cursor:pointer;line-height:1}
+
+/* ---------- SEÇÕES ---------- */
+.section{padding:var(--section-y) 0;position:relative}
+
+.section__head{max-width:60ch;margin-bottom:52px}
+.section__head h2{font-size:clamp(28px,3.4vw,42px);margin:14px 0 16px}
+.section__head p{color:var(--mute);font-size:17.5px}
+
+/* ---------- RODAPÉ ---------- */
+.footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--mute);font-size:14px}
+.footer__in{
+  width:var(--shell);margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+}
+.footer__mark{height:26px;width:auto;opacity:.75;vertical-align:middle;margin-right:10px;display:inline-block}
+.footer a:hover{color:var(--ink)}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:900px){
+  .nav__links{display:none}
+  .nav__links.is-open{
+    display:flex;flex-direction:column;gap:0;margin:0;
+    position:absolute;top:70px;left:0;right:0;
+    background:rgba(4,7,14,.97);
+    border-bottom:1px solid var(--line);
+    padding:8px 18px 18px;
+  }
+  .nav__links.is-open a{padding:12px 0;border-bottom:1px solid var(--line)}
+  .nav__burger{display:block}
+  .nav .btn{display:none}
+}
