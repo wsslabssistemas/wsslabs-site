@@ -37,9 +37,31 @@ PENDENTE:
   - ETAPA 4 do PUBLICAR.md: migração de domínio (NÃO iniciada)
   - Corrigir og:url e og:image quando migrar o domínio (item 14 da Etapa 4)
 
-PRÓXIMA TAREFA: Etapa 4 — migração de domínio. Fazer AGORA, enquanto o
-  Cripto Control ainda NÃO tem pagante firme. Decisão do William (19/07):
-  "melhor ajustar antes de ter que ajustar quando tiver pagantes."
+PRÓXIMA TAREFA: Etapa 4 — migração de domínio. EM ANDAMENTO.
+  Fazendo AGORA, enquanto o Cripto Control ainda NÃO tem pagante firme.
+  Decisão do William (19/07): "melhor ajustar antes de ter que ajustar quando
+  tiver pagantes."
+
+  PARTE A — ✅ CONCLUÍDA (20/07)
+    · cripto.wsslabs.com.br adicionado ao projeto Vercel do PRODUTO
+      (projeto "wss-vercel"), Connect to environment = Production
+    · CNAME criado na LOCAWEB (é lá que o DNS é gerenciado, NÃO no Registro.br
+      e NÃO na Vercel):
+        Entrada: cripto | Tipo: CNAME | Conteúdo:
+        07a04dbd724a66cb.vercel-dns-017.com   (SEM ponto no final)
+      É o MESMO valor do registro do www, que continua intacto.
+    · Zona DNS conferida: 6 registros, nada apagado. SOA subiu de
+      2026070502 para 2026072001 (prova de que a Locaweb salvou).
+    · www.wsslabs.com.br testado e funcionando normalmente.
+    · ⏳ Aguardando propagação de DNS (Vercel ainda "Invalid Configuration").
+      TTL 3600. Locaweb cita até 48h; na prática costuma ser bem menos.
+
+  PARTE B — não iniciada. Briefing pronto em PARTE-B-CHAT-DO-PRODUTO.md,
+    para levar ao chat do produto.
+    ⚠️ REGRA: só o passo do Supabase pode ser feito antes do DNS ficar verde
+    (adicionar URL é inofensivo). api/mp.js e webhook do Mercado Pago SÓ
+    depois que cripto.wsslabs.com.br abrir o sistema — apontar pagamento para
+    endereço que não responde quebra a cobrança.
 
 ================================================================================
   1. IDENTIFICAÇÃO
@@ -246,6 +268,11 @@ VERCEL:
   - ⚠️ COBRAR ESSA PROMESSA quando aparecer o primeiro pagante firme.
 
 DOMÍNIO: wsslabs.com.br já é do William (renovação anual já paga).
+  ⚠️ REGISTRADO E COM DNS NA **LOCAWEB** (não é Registro.br, não é Vercel).
+  Painel: Entradas de DNS → botão "Adicionar Entrada".
+  Armadilha conhecida: o campo "Tipo de Entrada" vem como "A" por padrão.
+  Se esquecer de trocar para CNAME, o erro que aparece é
+  "O IP informado não é válido" — que confunde, porque não fala do tipo.
   Subdomínio não custa nada — quantos quiser.
   Custo da migração de domínio = R$ 0.
 
@@ -287,6 +314,10 @@ ORDEM CORRETA:
      ativa. Se falhar, PARAR: o www ainda funciona, nada foi perdido.
   D) Só então: remover os domínios do projeto do produto e adicionar ao
      projeto da vitrine. Depois remover www do Supabase.
+     ⚠️ DESCOBERTO EM 20/07: hoje existe um redirecionamento 308 de
+        wsslabs.com.br → www.wsslabs.com.br, configurado no projeto do
+        PRODUTO. Esse redirecionamento precisa ser RECRIADO no projeto da
+        vitrine, senão quem digitar sem "www" não chega a lugar nenhum.
      14. Trocar og:url e og:image no index.html de wsslabs-site.vercel.app
          para wsslabs.com.br. Subir o ?v=.
 
