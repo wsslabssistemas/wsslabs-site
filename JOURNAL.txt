@@ -1,0 +1,351 @@
+================================================================================
+  WSS LABS — SITE INSTITUCIONAL / VITRINE — JOURNAL DO PROJETO
+================================================================================
+
+🚨 ATENÇÃO CLAUDE — LEIA ESTA SEÇÃO PRIMEIRO 🚨
+
+Se você está começando uma nova sessão e está vendo este arquivo, faça:
+
+1. LEIA O JOURNAL INTEIRO antes de qualquer outra coisa.
+2. O REPOSITÓRIO É PÚBLICO: github.com/wsslabssistemas/wsslabs-site
+   Você PODE ler o código real via api.github.com pelo bash. É a fonte da
+   verdade. Exemplo:
+     curl -s "https://api.github.com/repos/wsslabssistemas/wsslabs-site/contents/"
+   (A API tem limite de leituras por IP; se der "rate limit exceeded", espere.)
+   ⚠️ web_fetch NÃO funciona em github.com (robots bloqueia). Use a API.
+3. NÃO codar nada até:
+   (a) Ler o journal inteiro
+   (b) Conferir o estado atual do código no repositório
+   (c) Fazer resumo confirmado pelo usuário
+4. Tom: PT-BR direto, com emojis, profissional mas amigável.
+5. Usuário NÃO é programador — sempre step-by-step, um passo por vez.
+6. NUNCA mandar ZIP do projeto inteiro sem necessidade. Mandar SÓ os arquivos
+   alterados (pedido explícito do William). ZIP só na primeira entrega.
+
+--------------------------------------------------------------------------------
+ESTADO ATUAL (20/07/26)
+--------------------------------------------------------------------------------
+✅ Site construído, publicado e funcionando: https://wsslabs-site.vercel.app
+✅ Repositório no GitHub, público, com index.html na raiz (conferido via API)
+✅ GitHub Desktop clonado e funcionando na máquina do William
+✅ Rotina de trabalho definida: editar → Commit to main → Push origin →
+   Vercel republica sozinha em ~30s
+
+PENDENTE:
+  - Número de WhatsApp (campo vazio em js/data/site.js; o botão some sozinho
+    enquanto estiver vazio)
+  - ETAPA 4 do PUBLICAR.md: migração de domínio (NÃO iniciada)
+  - Corrigir og:url e og:image quando migrar o domínio (item 14 da Etapa 4)
+
+PRÓXIMA TAREFA: Etapa 4 — migração de domínio. Fazer AGORA, enquanto o
+  Cripto Control ainda NÃO tem pagante firme. Decisão do William (19/07):
+  "melhor ajustar antes de ter que ajustar quando tiver pagantes."
+
+================================================================================
+  1. IDENTIFICAÇÃO
+================================================================================
+
+DONO: William Squeff Scudiero (Porto Alegre/RS)
+E-MAIL DA EMPRESA: wsslabs.sistemas@gmail.com
+INSTAGRAM: @wss_labs (empresa) · @wsscriptocontrol (produto)
+  ⚠️ Contas ainda NÃO criadas (19/07) — os links já estão no site.
+
+REPOSITÓRIO: github.com/wsslabssistemas/wsslabs-site (PÚBLICO)
+PASTA LOCAL: C:\Users\willi\Documents\GitHub\wsslabs-site\
+NO AR EM: https://wsslabs-site.vercel.app (temporário)
+CONTA GITHUB: wsslabssistemas
+
+OBJETIVO DO SITE: vitrine centralizadora de TODOS os sistemas criados pela
+  WSS Labs. Serve para (a) mostrar o que já existe, (b) trazer clientes novos,
+  (c) vender desenvolvimento sob medida.
+
+PRINCÍPIOS DO USUÁRIO (ditos explicitamente):
+  - "Não quero ter que refazer esse projeto." Pensar SEMPRE como projeto
+    grande, mesmo quando pequeno.
+  - Já teve projeto que "ficou tudo armazenado no index e quebrou".
+  - Quer sempre a forma mais profissional e organizada, mesmo que dê mais
+    trabalho agora.
+  - Quer liberdade criativa: não aceita regra rígida que engesse produtos
+    futuros.
+
+================================================================================
+  2. ARQUITETURA — E POR QUE ELA É ASSIM
+================================================================================
+
+STACK: HTML + CSS + JavaScript puro. SEM framework, SEM npm, SEM build.
+  POR QUÊ: qualquer alteração do William não pode depender de instalar
+  ferramenta nem rodar comando. Publicar = mandar arquivo.
+  ⚠️ Scripts são CLÁSSICOS (não "type=module") de propósito: assim o
+  index.html abre com dois cliques no computador, sem precisar de servidor.
+
+ESTRUTURA:
+  index.html            → SÓ conteúdo e pontos de montagem (data-wss="...")
+  vercel.json           → cache dos assets + cabeçalhos de segurança
+  .vercelignore         → PREVIEW e ferramentas/ não vão para o site publicado
+  robots.txt, sitemap.xml
+  README.md             → manual do projeto
+  PUBLICAR.md           → passo a passo de publicação e rotina de trabalho
+  JOURNAL.txt           → este arquivo
+
+  css/tokens.css        → ⭐ ÚNICA FONTE DE COR/FONTE/MEDIDA. Nenhum #hex
+                          existe fora daqui. Trocar paleta = editar 1 arquivo.
+  css/base.css          → reset, tipografia, utilitários
+  css/layout.css        → topo, seções, rodapé
+  css/components.css    → botões, tags, chips, cards
+  css/pages/home.css    → só o que é exclusivo da home
+
+  js/core.js            → namespace WSS + WSS.url() + helpers. CARREGA PRIMEIRO
+  js/data/site.js       → ⭐ CONTEÚDO: contato, redes, menu, marcas
+  js/data/sistemas.js   → ⭐ CONTEÚDO: catálogo de produtos
+  js/layout.js          → desenha topo, rodapé e botões de contato
+  js/sistemas.js        → desenha os cards a partir do catálogo
+  js/reveal.js          → animação de entrada
+  js/gravity.js         → a malha do espaço-tempo (assinatura visual)
+  js/main.js            → liga os módulos. CARREGA POR ÚLTIMO
+  ferramentas/gerar-preview.py → gera o arquivo único de visualização
+
+  assets/marcas/        → logos em PNG transparente
+  assets/video/         → logo animado (360 KB, comprimido de 1,8 MB)
+  sistemas/             → (vazia) futuras páginas por produto
+
+AS 3 DECISÕES QUE IMPEDEM O PROJETO DE QUEBRAR:
+  1. SEPARAR aparência (css/), programa (js/) e conteúdo (js/data/).
+  2. TIRAR o conteúdo de dentro do código. O index.html NÃO sabe quais
+     produtos existem — quem sabe é js/data/sistemas.js. Adicionar produto
+     novo = colar um bloco no arquivo de dados. Sem tocar em HTML/CSS.
+  3. ISOLAR falhas. main.js roda cada módulo em try/catch. Testado: catálogo
+     corrompido de propósito → topo, rodapé, método, serviços e símbolo
+     continuaram funcionando. A página NUNCA fica em branco.
+
+CACHE: todos os <link> e <script> do index.html têm ?v=N no fim.
+  ⚠️ SEMPRE subir esse número ao alterar qualquer arquivo em css/ ou js/.
+  Versão atual: v=5
+
+data-base: o <html> tem data-base=".". Página em subpasta (ex:
+  /sistemas/cripto-control/) precisa de data-base="../..". É isso que faz
+  imagens, CSS e JS funcionarem de dentro de subpasta.
+
+================================================================================
+  3. IDENTIDADE VISUAL
+================================================================================
+
+CONCEITO: laboratório como centro gravitacional de inovação. A assinatura do
+  site é uma malha de espaço-tempo desenhada ao vivo em canvas, curvada por um
+  poço gravitacional e pelo cursor do mouse. É o conceito da marca virando
+  comportamento ("atrai soluções, distorce limites"). Só existe UM elemento
+  ousado; o resto é disciplinado de propósito.
+
+REFERÊNCIAS USADAS: Linear, Vercel, Stripe, Raycast.
+
+PALETA (extraída pixel a pixel dos logos):
+  --void #04070E · --deep #070C18 · --navy #0B183A
+  --blue #1F65BF · --sky #3893D2 · --cyan #57CFD4 · --lime #A6EC72
+  --ink #E9EEF9 · --ink-soft #B5C1D8 · --mute #8391AE
+  gradiente: 100deg, #1F65BF → #57CFD4 → #A6EC72
+
+TIPOGRAFIA: Sora (títulos) · Inter (texto) · JetBrains Mono (rótulos)
+
+LOGOS: todos recortados dos JPEGs originais para PNG com fundo transparente
+  (script com alpha por luminância). Ficam em assets/marcas/:
+    labs-mark.png / labs-lockup.png / labs-cena.jpeg / favicon.png
+    cripto-lockup.png / cripto-mark.png / cripto-lockup-anterior.png
+    finance-lockup.png
+    sales-lockup.png / sales-lockup-alt.png (versão escura, não usada)
+
+  ⚠️ O Cripto Control ganhou logo NOVO em 19/07 (órbitas + candles + seta),
+  alinhado com Finance e Sales. O logo antigo (escudo) ainda está no sistema
+  em produção — William vai trocar pelo chat do produto.
+  Ao trocar lá: quem já instalou o PWA vai continuar vendo o ícone antigo por
+  causa do cache do service worker.
+
+================================================================================
+  4. DECISÕES DE MARCA E PRODUTO
+================================================================================
+
+NOMES — REGRA COMBINADA (19/07):
+  O sobrenome da família é "WSS" + a identidade visual. NÃO é uma palavra
+  colada no fim. "Control" é uma LINHA dentro da casa, não uma regra.
+  CRITÉRIO: "Control" serve para produto que acompanha números ao longo do
+  tempo e dá controle sobre algo que já é do usuário.
+  ⚠️ William tem um PROJETO DE EDUCAÇÃO futuro que NÃO vai ter "Control" —
+  e está certo. Nome livre é permitido e esperado.
+  (Esse projeto de educação não está nas conversas deste Projeto do Claude.)
+
+PRODUTOS:
+  · WSS CRIPTO CONTROL — NO AR. Carteira + IR de cripto. Preço médio, cripto
+    por cripto gerando imposto, regra BR x exterior, PDF pro contador.
+    Corretoras: Binance, CoinEx, MEXC, Foxbit, Mercado Bitcoin.
+    Leis: 14.754 e IN 1.888.
+
+  · WSS FINANCE CONTROL — EM CONSTRUÇÃO (hoje no base44, wssfinance.base44.app)
+    Era "WSS Finance AI". Renomeado porque "AI" envelhece mal e IA é a
+    tecnologia, não o benefício.
+    ⚠️ FRONTEIRA DEFINIDA: Finance = dinheiro do dia a dia (entradas, saídas,
+    previsão do mês). Cripto = a obrigação anual (imposto).
+    O Finance NÃO PODE calcular imposto de cripto — senão não são dois
+    produtos, é um produto e um pedaço dele.
+
+  · WSS SALES CONTROL — EM CONSTRUÇÃO (hoje no base44,
+    befitnessvendas.base44.app). Era "WSS Sales Mentor".
+    ⭐ ESTE É O MAIS VALIDADO: já funciona na academia do William, entregando
+    resultado real.
+    O QUE FAZ (versão manual): o vendedor cola a mensagem do cliente, o sistema
+    gera a resposta pronta com técnica de venda avançada, considerando TODO o
+    histórico daquela conversa. O vendedor marca o que aconteceu (respondeu,
+    sumiu, marcou aula experimental) e o histórico realimenta o sistema.
+    Versão automatizada: conversa por IA, sem o copia-e-cola.
+    PLANO DO WILLIAM: núcleo único servindo vários nichos — academia, salão,
+    barbearia, concessionária, empresa de médio porte.
+
+    ANÁLISE JÁ ENTREGUE (não repetir, só retomar se ele pedir):
+      - O que muda entre nichos é CONTEÚDO, não funcionalidade. O caminho da
+        venda é idêntico; muda vocabulário, serviços, preços, objeções, tom.
+        Logo: núcleo = código, nicho = pacote de dados. Mesma lógica do
+        sistemas.js deste site.
+      - NÃO vender "para empresas" (genérico não converte). Um produto por
+        baixo, uma página de vendas POR NICHO.
+      - Manual e automatizado são DOIS PRODUTOS, não dois planos. O
+        automatizado exige WhatsApp oficial (aprovação Meta, custo por
+        conversa, número dedicado).
+      - Ordem de nichos sugerida: salão, barbearia, estúdio de pilates,
+        clínica de estética (vendem igual à academia). Concessionária e médio
+        porte são outro bicho — décimo cliente, não segundo.
+      - William NÃO quis desenhar isso ainda (chat focado no site).
+
+================================================================================
+  5. DECISÕES DE INFRAESTRUTURA
+================================================================================
+
+BASE44 (onde Finance e Sales estão hoje):
+  - PESQUISADO 19/07: exporta só o FRONTEND. Backend, banco, auth e
+    integrações ficam presos no base44. Banco sai só como CSV manual, uma
+    planilha por coleção. Migrar = RECONSTRUIR O MOTOR, não copiar arquivo.
+  - Sincronização com GitHub exige plano Builder (~US$40–50/mês) e é
+    PERMANENTE (não dá pra desligar depois).
+  - RISCO GRAVE: sistema de créditos. Ao bater o limite mensal, o base44 para
+    novas mensagens e novos pedidos de integração até o próximo ciclo. Ou
+    seja: app de cliente PAGANTE pode parar no dia 20 e não se conserta com
+    código.
+  - Tela de login continua com a interface padrão do base44, mesmo com
+    domínio próprio.
+  - DECISÃO: terminar os produtos no base44 (é mais rápido), colocar gente
+    usando DE GRAÇA para descobrir qual merece virar produto. Quando um
+    provar mercado, migrar SÓ ESSE para o alicerce do Cripto Control
+    (Vercel + Supabase + Mercado Pago). Nunca os dois juntos.
+  - REGRA: não colocar cliente PAGANTE no base44. Exportar CSV de tempos em
+    tempos como seguro.
+
+VERCEL:
+  - PESQUISADO 19/07: plano Hobby (grátis) é NÃO COMERCIAL por termos de uso,
+    e aplicado pela Vercel. Sem opção de excedente: ao bater o limite, o
+    deploy PAUSA até o próximo ciclo — o app sai do ar.
+  - Pro = US$20/mês por desenvolvedor, e cobre TODOS os projetos da conta
+    (vitrine + Cripto Control + futuros), não é por projeto.
+  - DECISÃO DO WILLIAM (19/07): "Quando tiver o primeiro pagante, eu assino o
+    Pró! Antes, não!"
+  - ⚠️ COBRAR ESSA PROMESSA quando aparecer o primeiro pagante firme.
+
+DOMÍNIO: wsslabs.com.br já é do William (renovação anual já paga).
+  Subdomínio não custa nada — quantos quiser.
+  Custo da migração de domínio = R$ 0.
+
+SEGURANÇA (alertado 19/07, pendente de verificação no chat do produto):
+  - Repositório do CRIPTO CONTROL deve ser PRIVATE (tem chave de API).
+  - Este site é PUBLIC de propósito: só HTML/CSS/imagem, nada secreto, e
+    assim o Claude consegue ler o código direto.
+  - ⚠️ Se o repo do produto já esteve público com chave dentro, esconder
+    agora NÃO resolve. Tem que TROCAR as chaves:
+      · Mercado Pago: token começa com APP_USR-
+      · Supabase: a service_role key é a crítica (a anon é pública por
+        natureza e não tem problema)
+    Chave nunca no código — sempre em Environment Variables na Vercel.
+
+================================================================================
+  6. MIGRAÇÃO DE DOMÍNIO — PLANO (ETAPA 4 DO PUBLICAR.md)
+================================================================================
+
+ONDE QUEREMOS CHEGAR:
+  wsslabs.com.br + www.wsslabs.com.br → esta vitrine
+  cripto.wsslabs.com.br              → WSS Cripto Control
+
+POR QUE A ORDEM IMPORTA: o produto está hoje no www. Trocar direto deixa o
+  sistema fora do ar no meio do caminho, e quem tentar pagar toma erro.
+  SOLUÇÃO: fazer o produto atender nos DOIS endereços ao mesmo tempo durante
+  a troca. Nunca existe um minuto sem sistema no ar.
+
+ORDEM CORRETA:
+  A) Adicionar cripto.wsslabs.com.br ao projeto Vercel DO PRODUTO. Testar.
+     (Nada quebra aqui — produto responde nos dois endereços.)
+  B) No chat do PRODUTO (é lá que está o código):
+     1. Supabase → Site URL + Redirect URLs: adicionar cripto., MANTER www
+     2. api/mp.js → notification_url e back_url para cripto. Publicar.
+     3. Painel Mercado Pago → atualizar URL do webhook
+     4. Service worker / PWA → publicar atualização que redireciona quem já
+        instalou o app no celular, ANTES da parte D
+  C) Testar em cripto.wsslabs.com.br o caminho COMPLETO: criar conta →
+     confirmar e-mail → entrar → PAGAMENTO DE TESTE → webhook → assinatura
+     ativa. Se falhar, PARAR: o www ainda funciona, nada foi perdido.
+  D) Só então: remover os domínios do projeto do produto e adicionar ao
+     projeto da vitrine. Depois remover www do Supabase.
+     14. Trocar og:url e og:image no index.html de wsslabs-site.vercel.app
+         para wsslabs.com.br. Subir o ?v=.
+
+AS 4 COISAS QUE QUEBRAM SE ESQUECIDAS (registrado desde o journal do produto):
+  1. URL do webhook no painel do Mercado Pago
+  2. notification_url / back_url no api/mp.js
+  3. Site URL + Redirect URLs no Supabase
+  4. Cache do service worker de quem já instalou o PWA
+
+================================================================================
+  7. HISTÓRICO
+================================================================================
+
+17/07/26 — Início. Objetivo: site centralizador dos sistemas da WSS Labs.
+  William enviou logos da WSS Labs e do Cripto Control + explicação do
+  simbolismo do buraco negro.
+
+18–19/07/26 — Primeira versão do site (arquivo único). Aprovada:
+  "não poderia imaginar algo melhor e mais bonito".
+  Logos recortados para PNG transparente e aplicados.
+
+19/07/26 — REESTRUTURAÇÃO. William pediu que o projeto fosse pensado como
+  projeto grande, dividido em pastas. Feito: separação css/js/data, tokens,
+  isolamento de falhas, README, vercel.json. Testado com jsdom (11 checagens
+  + teste de sabotagem).
+
+19/07/26 — Página branca no visualizador do chat. NÃO era bug: o visualizador
+  abre um arquivo por vez e não busca css/ e js/. Criado
+  ferramentas/gerar-preview.py, que gera PREVIEW-visualizar.html (arquivo
+  único, com imagens embutidas) só para visualização. NUNCA editar o PREVIEW —
+  ele é gerado. Vídeo comprimido de 1,8 MB para 360 KB.
+
+19/07/26 — Contato e redes adicionados. Finance e Sales entraram no catálogo.
+  Discussão de nomes. Logos novos de Finance, Sales e Cripto recebidos e
+  aplicados. Criado layout de "card médio" (1 card grande + 2 médios lado a
+  lado) para dar hierarquia entre o que está no ar e o que está em obras.
+
+19–20/07/26 — PUBLICAÇÃO.
+  · Erro clássico na Etapa 1: arrastou a PASTA em vez do CONTEÚDO dela.
+    Repositório apagado e refeito. Segunda tentativa correta.
+  · GitHub Desktop deu "This folder contains files. Git can only clone to
+    empty folders." → resolvido renomeando a pasta local e clonando limpo.
+  · Site no ar em wsslabs-site.vercel.app, conferido e aprovado.
+  · Correção: og:url e og:image precisavam ser endereços completos, senão
+    WhatsApp/Instagram não montam a pré-visualização do link.
+
+================================================================================
+  8. LEMBRETES PARA O CLAUDE
+================================================================================
+
+- Mandar SÓ arquivos alterados, não o projeto inteiro.
+- Ao alterar css/ ou js/: subir o ?v= no index.html.
+- Ao adicionar produto: mexer SÓ em js/data/sistemas.js. Se você precisou
+  tocar em HTML ou CSS para adicionar um produto, a arquitetura foi violada —
+  pare e repense.
+- Nenhum código de cor (#hex) fora de css/tokens.css.
+- Testar antes de entregar (jsdom já provou valor duas vezes).
+- O PREVIEW-visualizar.html é gerado. Nunca editar à mão; rodar o script.
+- William tem OUTRO chat para o Cripto Control. Coisas de código do produto
+  vão para lá — mas ANOTAR aqui o que foi combinado.
+- Cobrar: WhatsApp, contas de Instagram, plano Pro da Vercel no 1º pagante,
+  e a auditoria de chaves expostas no repo do produto.
