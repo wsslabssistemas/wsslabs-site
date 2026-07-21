@@ -25,17 +25,36 @@ Se você está começando uma nova sessão e está vendo este arquivo, faça:
 --------------------------------------------------------------------------------
 ESTADO ATUAL (20/07/26)
 --------------------------------------------------------------------------------
-✅ Site construído, publicado e funcionando: https://wsslabs-site.vercel.app
+🎉 SITE NO AR NO DOMÍNIO PRÓPRIO: https://www.wsslabs.com.br
+✅ Endereço técnico ainda válido: https://wsslabs-site.vercel.app
 ✅ Repositório no GitHub, público, com index.html na raiz (conferido via API)
 ✅ GitHub Desktop clonado e funcionando na máquina do William
 ✅ Rotina de trabalho definida: editar → Commit to main → Push origin →
    Vercel republica sozinha em ~30s
 
-PENDENTE:
-  - Número de WhatsApp (campo vazio em js/data/site.js; o botão some sozinho
-    enquanto estiver vazio)
-  - ETAPA 4 do PUBLICAR.md: migração de domínio (NÃO iniciada)
-  - Corrigir og:url e og:image quando migrar o domínio (item 14 da Etapa 4)
+✅ MIGRAÇÃO DE DOMÍNIO CONCLUÍDA (21/07). Partes A, B, C e D todas fechadas.
+
+PENDENTE (nada urgente, nada bloqueia):
+  1. Supabase → remover https://www.wsslabs.com.br das Redirect URLs
+     (aquele endereço agora é de OUTRO site; é higiene de segurança).
+     Manter cripto.wsslabs.com.br como Site URL. → chat do produto
+  2. Cancelar a assinatura de teste da Parte C (senão cobra R$9,90/mês) —
+     e aproveitar para validar o ciclo de cancelamento: assinatura_ativa
+     deve virar false sozinho. → chat do produto
+  3. Apagar as variáveis MP_PLAN_MENSAL e MP_PLAN_ANUAL da Vercel
+     (não são mais lidas) e o plano "TESTE" no painel do MP. → chat do produto
+  4. Número de WhatsApp (campo vazio em js/data/site.js; o botão some sozinho
+     enquanto estiver vazio)
+  5. Criar as contas @wss_labs e @wsscriptocontrol no Instagram
+     (os links já estão no rodapé do site)
+  6. Auditoria de chaves expostas no repositório do produto
+  7. Assinar o Vercel Pro quando aparecer o primeiro pagante (promessa do
+     William em 19/07)
+
+PRÓXIMOS PASSOS DO SITE (quando quiser):
+  - Página própria por produto em /sistemas/<slug>/ (usar data-base="../..")
+  - Subdomínios dos próximos produtos: sales.wsslabs.com.br,
+    finance.wsslabs.com.br — um projeto Vercel para cada
 
 PRÓXIMA TAREFA: Etapa 4 — migração de domínio. EM ANDAMENTO.
   Fazendo AGORA, enquanto o Cripto Control ainda NÃO tem pagante firme.
@@ -84,7 +103,33 @@ PRÓXIMA TAREFA: Etapa 4 — migração de domínio. EM ANDAMENTO.
       MP_PRECO_ANUAL. MP_PLAN_* ficaram inúteis.
     · Detalhes completos no journal do PRODUTO.
 
-  PARTE D — ⏳ PRONTA PARA EXECUTAR. Guia passo a passo em PARTE-D.md.
+  PARTE D — ✅ CONCLUÍDA (21/07). MIGRAÇÃO DE DOMÍNIO FINALIZADA.
+
+    ESTADO FINAL, verificado ao vivo:
+      wsslabs.com.br         -> 308 -> www.wsslabs.com.br
+      www.wsslabs.com.br     -> VITRINE (projeto wsslabs-site)
+      cripto.wsslabs.com.br  -> CRIPTO CONTROL (projeto WSS-Vercel)
+      wsslabs-site.vercel.app / wss-vercel.vercel.app -> continuam válidos
+
+    COMO FOI: removeu wsslabs.com.br e www do projeto WSS-Vercel (mantendo o
+    cripto.), e adicionou os dois ao wsslabs-site. Intervalo de indisponibilidade
+    do www: poucos minutos. O cripto. NUNCA parou.
+
+    ⚠️ ARMADILHA ENCONTRADA NA TELA "Add Domains" DA VERCEL:
+    existe uma caixa "Include apex and www variants (recommended)" marcada por
+    padrão. Com ela marcada e a opção de redirect escolhida, a Vercel tenta
+    fazer o www redirecionar para ele mesmo e dá o erro
+    "A domain cannot redirect to itself".
+    NA PRÁTICA ela resolveu tudo de uma vez: adicionou o www como Production E
+    o apex como 308 -> www, no mesmo clique. O erro seguinte
+    ("wsslabs.com.br is already assigned to this project") era só sinal de que
+    já estava feito. Antes de tentar de novo, SEMPRE conferir a lista.
+
+    NOTA: o botão de remover domínio fica DENTRO do "Edit" de cada linha.
+    A interface da Vercel também aparece em português em algumas telas
+    ("Domínios", "Adicionar Existente", "Atualizar").
+
+    Guia usado: PARTE-D.md (mantido para referência futura).
 
     🚨 PROBLEMA GRAVE ENCONTRADO E CORRIGIDO ANTES DA TROCA (21/07):
     Os três botões "Abrir o Cripto Control" da vitrine apontavam para
