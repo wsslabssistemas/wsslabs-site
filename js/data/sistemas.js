@@ -53,6 +53,19 @@ WSS.dados.sistemas = [
     acoes: [
       { texto:'Quero testar quando abrir', url:'#contato', tipo:'ghost' }
     ]
+  },
+
+  {
+    slug: 'play-edu',
+    nome: 'WSS Play Edu',
+    status: 'em-obras',
+    destaque: false,
+    logo: 'assets/marcas/playedu-lockup.png',
+    resumo: 'Ensinar brincando, com o professor no comando. O professor propõe temas e atividades pela disciplina que está dando, acompanha a turma e cada aluno separadamente, e vê no relatório o que a criança acertou, errou e onde trava. Dos 5 aos 17 anos, seguindo o conteúdo exigido pelo MEC.',
+    chips: ['Painel do professor','Turmas e alunos','Relatório de desempenho','Base curricular do MEC','5 a 17 anos'],
+    acoes: [
+      { texto:'Quero saber quando abrir', url:'#contato', tipo:'ghost' }
+    ]
   }
 
   /* ------------------------------------------------------------

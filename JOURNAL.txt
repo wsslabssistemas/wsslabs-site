@@ -349,6 +349,42 @@ PRODUTOS:
     O Finance NÃO PODE calcular imposto de cripto — senão não são dois
     produtos, é um produto e um pedaço dele.
 
+  · WSS PLAY EDU — EM CONSTRUÇÃO. Adicionado ao site em 21/07.
+    Plataforma de jogos e atividades virtuais de apoio à escola, cobrindo o
+    conteúdo exigido pelo MEC, para alunos de 5 a 17 anos. Ensinar brincando.
+    ⭐ ESTE É O PRODUTO QUE VALIDOU A REGRA DE NOMES: não tem "Control", e não
+    deveria mesmo ter. O nome fala a língua de escola; a coerência de família
+    vem da identidade VISUAL (o WSS, as órbitas azul->verde), não da palavra.
+    Logo em assets/marcas/playedu-lockup.png e playedu-mark.png.
+
+    PÚBLICO — DECIDIDO EM 21/07: vender para OS DOIS (escola e pais), mas
+    COMEÇAR PELA ESCOLA.
+    Versão escola: painel do professor, gestão de turmas e de alunos
+    individuais, propor temas e atividades conforme a disciplina estudada,
+    relatórios de desempenho (o que acertou, o que errou, onde tem mais
+    dificuldade).
+
+    ⭐ DECISÃO DE ARQUITETURA QUE DECORRE DISSO — não perder de vista:
+    A versão da escola CONTÉM a versão dos pais. O conceito de TURMA precisa
+    existir desde a primeira linha de código, mesmo que no começo toda turma
+    tenha um aluno só. A versão para pais é uma "turma de 1", com o
+    responsável no lugar do professor.
+    Se fosse construído ao contrário (pais primeiro), o sistema nasceria com
+    "um aluno, um responsável" e enfiar turma/professor/escola depois tocaria
+    em cada tela e cada tabela. Barato agora, caríssimo depois.
+
+    ⚠️ LGPD E DADOS DE CRIANÇA: o produto trata dados de menores de idade
+    (5 a 17 anos), que no Brasil têm proteção específica — consentimento de
+    quem tem a guarda, finalidade restrita, minimização de dados. Escola vai
+    perguntar isso na negociação, e é o tipo de item que derruba venda B2B
+    quando não há resposta pronta. Tratar como requisito, não como detalhe
+    jurídico para depois.
+
+    ESTRATÉGIA DE ENTRADA SUGERIDA: repetir o que deu certo no Sales Control —
+    colocar em UMA escola real primeiro, de graça, e deixar o uso mostrar o
+    que falta. Escola PARTICULAR antes de pública (pública exige licitação,
+    ciclo longo).
+
   · WSS SALES CONTROL — EM CONSTRUÇÃO (hoje no base44,
     befitnessvendas.base44.app). Era "WSS Sales Mentor".
     ⭐ ESTE É O MAIS VALIDADO: já funciona na academia do William, entregando

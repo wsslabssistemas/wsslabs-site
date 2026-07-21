@@ -100,7 +100,7 @@
 }
 
 /* ---------- CARD MÉDIO (sistema com logo, ainda sem destaque) ---------- */
-.sys-duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.sys-duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:var(--gap)}
 
 .sys--medio{display:flex;flex-direction:column}
 .sys--medio .sys__topo{
