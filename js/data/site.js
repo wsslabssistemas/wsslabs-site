@@ -26,7 +26,7 @@ WSS.dados.site = {
   ],
 
   /* ---- BOTÃO PRINCIPAL DO TOPO ---- */
-  ctaTopo: { texto:'Abrir o Cripto Control', url:'https://www.wsslabs.com.br' },
+  ctaTopo: { texto:'Abrir o Cripto Control', url:'https://cripto.wsslabs.com.br' },
 
   /* ---- MENU (a ordem aqui é a ordem na tela) ---- */
   menu: [

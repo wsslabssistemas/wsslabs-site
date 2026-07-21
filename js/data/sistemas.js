@@ -24,8 +24,8 @@ WSS.dados.sistemas = [
     resumo: 'Controle de carteira e Imposto de Renda de criptomoeda. Conecta nas corretoras, calcula o preço médio, entende que troca de cripto por cripto já gera imposto e separa o que é regra brasileira do que é regra do exterior. No fim, entrega o relatório pronto para o contador.',
     chips: ['Binance','CoinEx','MEXC','Foxbit','Mercado Bitcoin','Lei 14.754','IN 1.888','PDF p/ contador','Instala no celular'],
     acoes: [
-      { texto:'Abrir o sistema',           url:'https://www.wsslabs.com.br', tipo:'primary' },
-      { texto:'30 dias grátis, sem cartão', url:'https://www.wsslabs.com.br', tipo:'ghost'   }
+      { texto:'Abrir o sistema',           url:'https://cripto.wsslabs.com.br', tipo:'primary' },
+      { texto:'30 dias grátis, sem cartão', url:'https://cripto.wsslabs.com.br', tipo:'ghost'   }
     ]
   },
 

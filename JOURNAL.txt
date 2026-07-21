@@ -72,7 +72,55 @@ PRÓXIMA TAREFA: Etapa 4 — migração de domínio. EM ANDAMENTO.
     do produto que existe PWA com icons/icon-192.png e título "WSS Cripto" —
     revisar start_url e scope do manifest junto com o service worker.
 
-  PARTE C — ⏸️ PARADA AQUI EM 20/07. RETOMAR AMANHÃ. Plano definido no chat
+  PARTE C — ✅ FECHADA (21/07). MONETIZAÇÃO VALIDADA PONTA A PONTA.
+    Pagamento passou e o Supabase atualizou sozinho (assinatura_ativa=true,
+    assinatura_expira_em preenchido, plano='mensal'). O casamento
+    pagamento<->usuário é por external_reference (id do usuário), NÃO por e-mail.
+    · O que fez passar: pagar do dispositivo/conta habituais de quem paga. As
+      recusas anteriores foram ANTIFRAUDE do MP, não bug (janela anônima +
+      aparelho novo + conta de um e cartão de outro + recusas em série).
+    · O sistema NÃO usa mais preapproval_plan_id. Monta a assinatura na hora
+      (mensal = 1 month, anual = 12 months) com preço de MP_PRECO_MENSAL /
+      MP_PRECO_ANUAL. MP_PLAN_* ficaram inúteis.
+    · Detalhes completos no journal do PRODUTO.
+
+  PARTE D — ⏳ PRONTA PARA EXECUTAR. Guia passo a passo em PARTE-D.md.
+
+    🚨 PROBLEMA GRAVE ENCONTRADO E CORRIGIDO ANTES DA TROCA (21/07):
+    Os três botões "Abrir o Cripto Control" da vitrine apontavam para
+    https://www.wsslabs.com.br — que PASSA A SER A PRÓPRIA VITRINE depois da
+    Parte D. O visitante clicaria e voltaria para a mesma página. Loop.
+    CORRIGIDO em js/data/site.js (ctaTopo) e js/data/sistemas.js (2 ações):
+    tudo aponta para https://cripto.wsslabs.com.br.
+    LIÇÃO: ao migrar domínio, procurar TODOS os links internos que apontam
+    para o endereço que vai mudar de dono.
+
+    🚨 SEGUNDO PROBLEMA, NÃO COBERTO PELO CHAT DO PRODUTO:
+    O public/js/pwa.js do produto migra quem abrir o app ENQUANTO o www ainda
+    serve o sistema. Depois da Parte D o www vira a vitrine e aquele script
+    nunca mais roda. Quem NÃO abriu o app nesse meio-tempo fica com o service
+    worker antigo registrado no www, interceptando pedidos por cima do site
+    novo.
+    SOLUÇÃO: criado js/migracao-pwa.js NA VITRINE. É o PRIMEIRO script do
+    index.html, de propósito. Faz:
+      A) SEMPRE: desregistra service workers e apaga caches wss-cripto-* deste
+         domínio (faxina para todo mundo)
+      B) SÓ SE (app instalado abrindo) E (houver vestígio do sistema antigo):
+         redireciona para cripto.wsslabs.com.br preservando path/query/hash
+    As DUAS condições juntas evitam expulsar quem só queria ver o site da
+    empresa. Válvula de escape igual à do produto:
+      localStorage.setItem('wss:sem-migracao','1')
+    TESTADO em 5 cenários, todos passando (navegador comum com e sem rastro,
+    app instalado com e sem rastro, e válvula de escape).
+    ⚠️ NÃO APAGAR esse arquivo tão cedo — sugestão: manter 12 meses.
+
+    OUTRAS CORREÇÕES DA MESMA RODADA (?v=5 -> ?v=6):
+    · canonical, og:url e og:image -> https://www.wsslabs.com.br/
+      (decisão: manter o WWW como principal, para não mexer no 308 já
+      existente nem nos links que já circulam)
+    · sitemap.xml e robots.txt -> www
+
+  PARTE C (histórico do plano original) — Plano definido no chat
     do produto, transcrito abaixo para não se perder:
 
     PREPARAÇÃO — criar plano temporário no Mercado Pago:
