@@ -59,7 +59,11 @@ PRÓXIMA TAREFA: Etapa 4 — migração de domínio. EM ANDAMENTO.
     · ➡️ PRODUTO RESPONDENDO NOS DOIS ENDEREÇOS. Rede de segurança armada:
       daqui pra frente, se algo falhar, o www continua no ar.
 
-  PARTE B — LIBERADA POR COMPLETO, não iniciada. Briefing pronto em
+  PARTE B — ✅ CONCLUÍDA (20/07), sem nenhum minuto fora do ar.
+    Supabase, api/mp.js, webhook do Mercado Pago e service worker/PWA
+    ajustados no chat do produto. www seguiu funcionando o tempo todo.
+
+  PARTE B (histórico) — briefing original: Briefing pronto em
     PARTE-B-CHAT-DO-PRODUTO.md, para anexar no chat do produto.
     Ordem: (1) Supabase, (2) api/mp.js, (3) webhook Mercado Pago,
            (4) service worker / PWA.
@@ -68,8 +72,42 @@ PRÓXIMA TAREFA: Etapa 4 — migração de domínio. EM ANDAMENTO.
     do produto que existe PWA com icons/icon-192.png e título "WSS Cripto" —
     revisar start_url e scope do manifest junto com o service worker.
 
-  PARTE C — teste completo em cripto.wsslabs.com.br, incluindo PAGAMENTO REAL
-    de teste. Se falhar, PARAR: o www ainda está no ar.
+  PARTE C — ⏸️ PARADA AQUI EM 20/07. RETOMAR AMANHÃ. Plano definido no chat
+    do produto, transcrito abaixo para não se perder:
+
+    PREPARAÇÃO — criar plano temporário no Mercado Pago:
+      Nome "TESTE — apagar depois" · R$ 5,00 (mínimo do MP) · mensal ·
+      SEM teste grátis (senão a cobrança não acontece na hora e o webhook de
+      pagamento não dispara) · só cartão de crédito.
+      Pegar o plan_id abrindo o link e olhando a URL.
+
+    O TESTE:
+      1. Vercel → trocar TEMPORARIAMENTE a variável MP_PLAN_MENSAL para o ID
+         do plano de teste → Redeploy
+      2. Em cripto.wsslabs.com.br, JANELA ANÔNIMA: criar conta nova →
+         confirmar e-mail → entrar → Configurações → Assinatura →
+         Assinar mensal
+      3. No checkout: ⚠️ NÃO PODE ESTAR LOGADO NO MERCADO PAGO — isso já
+         travou o William uma vez. Pagar com cartão real (R$5).
+      4. Supabase → Table Editor → tabela "profiles", linha dessa conta:
+           assinatura_ativa      = true
+           assinatura_expira_em  = data futura
+           plano                 = 'mensal'
+         Os três mudando sozinhos = monetização validada. 🎯
+
+    DEPOIS DO TESTE (⚠️ NÃO ESQUECER):
+      1. Cancelar a assinatura de teste (painel MP → Planos → Assinantes)
+      2. 🚨 VOLTAR MP_PLAN_MENSAL para o plano REAL de R$ 9,90 → Redeploy
+         (se esquecer, cliente real assina por R$5)
+      3. Apagar ou desativar o plano de teste
+
+    SE FALHAR: PARAR. O www está no ar, nada foi perdido.
+      Pontos onde costuma falhar:
+        · checkout não abre → conferir se está deslogado do Mercado Pago
+        · Supabase não atualiza → ver Logs da Vercel, procurar linhas com "[MP"
+
+    NOTA: este é o primeiro teste ponta a ponta da monetização. Nunca foi
+    validado do começo ao fim antes.
 
   PARTE D — volta para ESTE chat (o do site). Trocar os domínios de projeto e
     recriar o redirecionamento 308.
