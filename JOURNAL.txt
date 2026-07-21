@@ -53,15 +53,26 @@ PRÓXIMA TAREFA: Etapa 4 — migração de domínio. EM ANDAMENTO.
     · Zona DNS conferida: 6 registros, nada apagado. SOA subiu de
       2026070502 para 2026072001 (prova de que a Locaweb salvou).
     · www.wsslabs.com.br testado e funcionando normalmente.
-    · ⏳ Aguardando propagação de DNS (Vercel ainda "Invalid Configuration").
-      TTL 3600. Locaweb cita até 48h; na prática costuma ser bem menos.
+    · ✅ DNS PROPAGOU NO MESMO DIA (bem antes das 48h que a Locaweb cita).
+      https://cripto.wsslabs.com.br verificado: serve o CRIPTO CONTROL
+      (Dashboard, Operações, Imposto de Renda), não a vitrine.
+    · ➡️ PRODUTO RESPONDENDO NOS DOIS ENDEREÇOS. Rede de segurança armada:
+      daqui pra frente, se algo falhar, o www continua no ar.
 
-  PARTE B — não iniciada. Briefing pronto em PARTE-B-CHAT-DO-PRODUTO.md,
-    para levar ao chat do produto.
-    ⚠️ REGRA: só o passo do Supabase pode ser feito antes do DNS ficar verde
-    (adicionar URL é inofensivo). api/mp.js e webhook do Mercado Pago SÓ
-    depois que cripto.wsslabs.com.br abrir o sistema — apontar pagamento para
-    endereço que não responde quebra a cobrança.
+  PARTE B — LIBERADA POR COMPLETO, não iniciada. Briefing pronto em
+    PARTE-B-CHAT-DO-PRODUTO.md, para anexar no chat do produto.
+    Ordem: (1) Supabase, (2) api/mp.js, (3) webhook Mercado Pago,
+           (4) service worker / PWA.
+    ⚠️ O item 4 é o mais fácil de esquecer e o mais chato de descobrir depois:
+    quem já instalou o app no celular aponta para o www. Confirmado no HTML
+    do produto que existe PWA com icons/icon-192.png e título "WSS Cripto" —
+    revisar start_url e scope do manifest junto com o service worker.
+
+  PARTE C — teste completo em cripto.wsslabs.com.br, incluindo PAGAMENTO REAL
+    de teste. Se falhar, PARAR: o www ainda está no ar.
+
+  PARTE D — volta para ESTE chat (o do site). Trocar os domínios de projeto e
+    recriar o redirecionamento 308.
 
 ================================================================================
   1. IDENTIFICAÇÃO
