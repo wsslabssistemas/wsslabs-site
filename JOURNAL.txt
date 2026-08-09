@@ -26,6 +26,14 @@ Se você está começando uma nova sessão e está vendo este arquivo, faça:
 ESTADO ATUAL (20/07/26)
 --------------------------------------------------------------------------------
 🎉 SITE NO AR NO DOMÍNIO PRÓPRIO: https://www.wsslabs.com.br
+
+MAPA DE ENDEREÇOS (atualizado 09/08/26):
+  wsslabs.com.br         -> 308 -> www
+  www.wsslabs.com.br     -> VITRINE          (projeto wsslabs-site)
+  cripto.wsslabs.com.br  -> WSS Cripto Control (projeto wss-vercel)
+  kairos.wsslabs.com.br  -> WSS KAIRÓS         (projeto wss-kairos)
+  ⚠️ Cada produto = 1 projeto Vercel + 1 subdomínio. Nenhum encosta no
+  limite de funções do outro. Próximos: finance., playedu.
 ✅ Endereço técnico ainda válido: https://wsslabs-site.vercel.app
 ✅ Repositório no GitHub, público, com index.html na raiz (conferido via API)
 ✅ GitHub Desktop clonado e funcionando na máquina do William
@@ -385,7 +393,15 @@ PRODUTOS:
     que falta. Escola PARTICULAR antes de pública (pública exige licitação,
     ciclo longo).
 
-  · WSS KAIRÓS — EM CONSTRUÇÃO. Era "WSS Sales Mentor", depois "WSS Sales
+  · WSS KAIRÓS — 🎉 NO AR desde 09/08/26 em https://kairos.wsslabs.com.br
+    (projeto Vercel próprio: wss-kairos. CNAME na Locaweb:
+     kairos -> d7c65c1346bb8485.vercel-dns-017.com — valor DIFERENTE do
+     cripto., porque é outro projeto. Sempre copiar o que a Vercel mostrar.)
+    Feito em Next.js, com tela de login e painel. O site do produto destaca
+    três coisas: Biblioteca curada, O momento certo e Trava anti-invenção.
+    Modelo MANUAL em operação; versão AUTOMÁTICA em construção.
+    Card do site promovido a DESTAQUE (card grande), em segundo lugar,
+    logo abaixo do Cripto Control. Era "WSS Sales Mentor", depois "WSS Sales
     Control". Renomeado em 21/07 para WSS KAIRÓS.
     Kairós = conceito grego do MOMENTO CERTO DE AGIR (em oposição a chronos,
     o tempo que só passa). Preciso para um sistema que diz o que responder e

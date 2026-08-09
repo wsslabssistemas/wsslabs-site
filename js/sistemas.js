@@ -97,6 +97,11 @@ WSS.registrar('sistemas', function(){
   WSS.montar('[data-wss="sistemas"]', html);
 
   /* faixa de números: só conta o que realmente está no ar */
+  var quantos = lista.filter(function(s){ return s.status === 'no-ar'; }).length;
   var contador = WSS.el('[data-wss="conta-no-ar"]');
-  if(contador) contador.textContent = lista.filter(function(s){ return s.status === 'no-ar'; }).length;
+  if(contador) contador.textContent = quantos;
+
+  /* o rótulo concorda sozinho: 1 sistema / 2 sistemas */
+  var rotulo = WSS.el('[data-wss="rotulo-no-ar"]');
+  if(rotulo) rotulo.textContent = quantos === 1 ? 'sistema em produção' : 'sistemas em produção';
 });

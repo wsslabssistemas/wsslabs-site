@@ -30,6 +30,20 @@ WSS.dados.sistemas = [
   },
 
   {
+    slug: 'kairos',
+    nome: 'WSS Kairós',
+    status: 'no-ar',
+    destaque: true,
+    logo: 'assets/marcas/kairos-lockup.png',
+    resumo: 'O vendedor cola a mensagem do cliente e recebe a resposta pronta — com a técnica de venda explicada, para aprender no trabalho. O sistema cruza os fatos da empresa, a técnica do ramo e o histórico daquele cliente. E quando falta um dado para responder, ele avisa em vez de inventar.',
+    chips: ['Resposta pronta','15 ramos, 285 situações','Nunca inventa preço ou horário','Fila de follow-up','Sem trocar o sistema atual'],
+    acoes: [
+      { texto:'Abrir o Kairós', url:'https://kairos.wsslabs.com.br', tipo:'primary' },
+      { texto:'Falar com a gente',  url:'#contato', tipo:'ghost' }
+    ]
+  },
+
+  {
     slug: 'finance-control',
     nome: 'WSS Finance Control',
     status: 'em-obras',
@@ -37,19 +51,6 @@ WSS.dados.sistemas = [
     logo: 'assets/marcas/finance-lockup.png',
     resumo: 'O controle do dinheiro do dia a dia: quanto entra, quanto sai, para onde vai e o que sobra no fim do mês. Com previsão de gastos e acompanhamento de investimentos.',
     chips: ['Entradas e saídas','Previsão do mês','Investimentos'],
-    acoes: [
-      { texto:'Quero testar quando abrir', url:'#contato', tipo:'ghost' }
-    ]
-  },
-
-  {
-    slug: 'kairos',
-    nome: 'WSS Kairós',
-    status: 'em-obras',
-    destaque: false,
-    logo: 'assets/marcas/kairos-lockup.png',
-    resumo: 'O vendedor cola a mensagem do cliente e recebe a resposta pronta — com a técnica de venda explicada, para aprender no trabalho. O sistema cruza os fatos da empresa, a técnica do ramo e o histórico daquele cliente. E quando falta um dado para responder, ele avisa em vez de inventar.',
-    chips: ['Resposta pronta','15 ramos, 285 situações','Nunca inventa preço ou horário','Fila de follow-up','Sem trocar o sistema atual'],
     acoes: [
       { texto:'Quero testar quando abrir', url:'#contato', tipo:'ghost' }
     ]
@@ -67,6 +68,7 @@ WSS.dados.sistemas = [
       { texto:'Quero saber quando abrir', url:'#contato', tipo:'ghost' }
     ]
   }
+
 
   /* ------------------------------------------------------------
      MODELO PARA O PRÓXIMO SISTEMA — copie, cole acima desta nota
