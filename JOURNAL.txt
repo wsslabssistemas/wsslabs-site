@@ -385,32 +385,60 @@ PRODUTOS:
     que falta. Escola PARTICULAR antes de pública (pública exige licitação,
     ciclo longo).
 
-  · WSS SALES CONTROL — EM CONSTRUÇÃO (hoje no base44,
-    befitnessvendas.base44.app). Era "WSS Sales Mentor".
-    ⭐ ESTE É O MAIS VALIDADO: já funciona na academia do William, entregando
-    resultado real.
-    O QUE FAZ (versão manual): o vendedor cola a mensagem do cliente, o sistema
-    gera a resposta pronta com técnica de venda avançada, considerando TODO o
-    histórico daquela conversa. O vendedor marca o que aconteceu (respondeu,
-    sumiu, marcou aula experimental) e o histórico realimenta o sistema.
-    Versão automatizada: conversa por IA, sem o copia-e-cola.
-    PLANO DO WILLIAM: núcleo único servindo vários nichos — academia, salão,
-    barbearia, concessionária, empresa de médio porte.
+  · WSS KAIRÓS — EM CONSTRUÇÃO. Era "WSS Sales Mentor", depois "WSS Sales
+    Control". Renomeado em 21/07 para WSS KAIRÓS.
+    Kairós = conceito grego do MOMENTO CERTO DE AGIR (em oposição a chronos,
+    o tempo que só passa). Preciso para um sistema que diz o que responder e
+    quando. Logo: aperto de mão dentro das órbitas azul->verde da família.
+    Arquivos: assets/marcas/kairos-lockup.png e kairos-mark.png
+    (os antigos sales-lockup.png e sales-lockup-alt.png ficaram no repositório;
+    podem ser apagados quando quiser).
+
+    ⭐ PRODUTO MAIS VALIDADO DA CASA: já roda na academia do William,
+    entregando resultado real.
+
+    O QUE É: plataforma de inteligência comercial. Transforma cada atendimento
+    por WhatsApp em venda conduzida com técnica, SEM trocar o sistema que a
+    empresa já usa e sem exigir que ela escreva nada do zero.
+
+    COMO FUNCIONA: o vendedor cola a mensagem do cliente. O sistema cruza TRÊS
+    coisas — (1) os fatos da empresa (preços, prazos, políticas, catálogo,
+    agenda), (2) a biblioteca de técnica de venda daquele ramo, (3) o histórico
+    daquele cliente — e devolve a resposta pronta COM A TÉCNICA EXPLICADA.
+    O vendedor aprende no trabalho, não em treinamento.
+
+    A BIBLIOTECA É O PRODUTO: 15 ramos, 285 situações curadas (academia,
+    barbearia, salão, clínica, oficina, pet, casa de festas, escola, curso,
+    indústria, distribuidora, automação, energia solar, marcenaria, software).
+    Cada situação traz a estratégia, a técnica, o AUTOR que a formulou e
+    QUANDO NÃO USÁ-LA.
+
+    ⭐ A TRAVA QUE SEPARA DE UM CHATBOT: quando falta um fato da empresa para
+    responder, o sistema NÃO REDIGE — avisa o vendedor. A verificação é
+    ESTRUTURAL, no código, não um pedido no prompt. Preço e estoque só saem do
+    catálogo; horário só sai da agenda. Prefere dizer "não sei" a inventar,
+    porque cliente pagante não perdoa promessa inventada.
+    ⚠️ Isto NÃO é detalhe técnico: é o diferencial comercial. Qualquer um
+    pluga um LLM no WhatsApp; quase ninguém garante que ele não inventa.
+
+    O BURACO QUE FECHA: mais de 70% dos orçamentos em serviços técnicos nunca
+    recebem uma segunda mensagem. O Kairós mantém a FILA do que precisa ser
+    falado hoje — o combinado, o contrato a vencer, o follow-up devido, a
+    recompra — cada pessoa uma vez só, pelo motivo mais urgente.
+
+    VERSÕES: manual (vendedor copia e cola) e automatizada (conversa por IA).
+    ⚠️ São DOIS PRODUTOS, não dois planos: o automatizado exige WhatsApp
+    oficial (aprovação Meta, custo por conversa, número dedicado) e erro dele
+    é erro seu na frente do cliente.
 
     ANÁLISE JÁ ENTREGUE (não repetir, só retomar se ele pedir):
-      - O que muda entre nichos é CONTEÚDO, não funcionalidade. O caminho da
-        venda é idêntico; muda vocabulário, serviços, preços, objeções, tom.
-        Logo: núcleo = código, nicho = pacote de dados. Mesma lógica do
-        sistemas.js deste site.
+      - Núcleo = código; nicho = pacote de dados. O que muda entre ramos é
+        CONTEÚDO, não funcionalidade. Mesma lógica do sistemas.js deste site.
       - NÃO vender "para empresas" (genérico não converte). Um produto por
-        baixo, uma página de vendas POR NICHO.
-      - Manual e automatizado são DOIS PRODUTOS, não dois planos. O
-        automatizado exige WhatsApp oficial (aprovação Meta, custo por
-        conversa, número dedicado).
-      - Ordem de nichos sugerida: salão, barbearia, estúdio de pilates,
-        clínica de estética (vendem igual à academia). Concessionária e médio
-        porte são outro bicho — décimo cliente, não segundo.
-      - William NÃO quis desenhar isso ainda (chat focado no site).
+        baixo, uma PÁGINA DE VENDAS POR NICHO.
+      - Ordem de nichos: salão, barbearia, pilates, estética (vendem igual à
+        academia, e a prova do William serve quase inteira). Concessionária e
+        médio porte são o décimo cliente, não o segundo.
 
 ================================================================================
   5. DECISÕES DE INFRAESTRUTURA

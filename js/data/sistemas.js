@@ -43,13 +43,13 @@ WSS.dados.sistemas = [
   },
 
   {
-    slug: 'sales-control',
-    nome: 'WSS Sales Control',
+    slug: 'kairos',
+    nome: 'WSS Kairós',
     status: 'em-obras',
     destaque: false,
-    logo: 'assets/marcas/sales-lockup.png',
-    resumo: 'O vendedor cola a mensagem do cliente e recebe a resposta pronta, escrita com técnica de venda avançada e com todo o histórico daquela conversa em mente. Cada retorno fica registrado, e o sistema aprende o andamento da negociação.',
-    chips: ['Resposta pronta','Histórico da conversa','Follow-up','Versão automatizada com IA'],
+    logo: 'assets/marcas/kairos-lockup.png',
+    resumo: 'O vendedor cola a mensagem do cliente e recebe a resposta pronta — com a técnica de venda explicada, para aprender no trabalho. O sistema cruza os fatos da empresa, a técnica do ramo e o histórico daquele cliente. E quando falta um dado para responder, ele avisa em vez de inventar.',
+    chips: ['Resposta pronta','15 ramos, 285 situações','Nunca inventa preço ou horário','Fila de follow-up','Sem trocar o sistema atual'],
     acoes: [
       { texto:'Quero testar quando abrir', url:'#contato', tipo:'ghost' }
     ]
