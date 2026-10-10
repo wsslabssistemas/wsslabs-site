@@ -13,6 +13,10 @@ WSS.dados.site = {
   descricao: 'Laboratório de sistemas',
   cidade: 'Porto Alegre, Brasil',
 
+  /* ---- EMPRESA (aparece no rodapé) ---- */
+  razaoSocial: 'WSSLABS TECNOLOGIA LTDA',
+  cnpj: '69.480.417/0001-03',
+
   /* ---- CONTATO ---- */
   contato: {
     email:    'wsslabs.sistemas@gmail.com',

@@ -62,6 +62,7 @@ WSS.registrar('layout', function(){
       '<span>'+
         '<img class="footer__mark" src="'+WSS.url(s.marcas.simbolo)+'" alt="" aria-hidden="true">'+
         '© '+new Date().getFullYear()+' '+WSS.txt(s.nome)+' Sistemas · '+WSS.txt(s.cidade)+
+        (s.cnpj ? ' · '+WSS.txt(s.razaoSocial)+' · CNPJ '+WSS.txt(s.cnpj) : '')+
       '</span>'+
       '<span>'+extras.join(' · ')+'</span>'+
     '</div>');

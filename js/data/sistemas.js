@@ -35,11 +35,11 @@ WSS.dados.sistemas = [
     status: 'no-ar',
     destaque: true,
     logo: 'assets/marcas/kairos-lockup.png',
-    resumo: 'O vendedor cola a mensagem do cliente e recebe a resposta pronta — com a técnica de venda explicada, para aprender no trabalho. O sistema cruza os fatos da empresa, a técnica do ramo e o histórico daquele cliente. E quando falta um dado para responder, ele avisa em vez de inventar.',
-    chips: ['Resposta pronta','15 ramos, 285 situações','Nunca inventa preço ou horário','Fila de follow-up','Sem trocar o sistema atual'],
+    resumo: 'A Kai atende o WhatsApp, o Instagram e o Facebook da empresa na hora — inclusive de madrugada e no domingo — com os preços, horários e regras que a empresa cadastrou. Agenda a visita ou a aula experimental, chama de volta quem sumiu e avisa a equipe quando precisa de gente. Quando falta um dado, ela avisa em vez de inventar.',
+    chips: ['Responde 24 horas','WhatsApp oficial, Instagram e Facebook','Nunca inventa preço ou horário','Reativa quem parou','Sem fidelidade'],
     acoes: [
-      { texto:'Abrir o Kairós', url:'https://kairos.wsslabs.com.br', tipo:'primary' },
-      { texto:'Falar com a gente',  url:'#contato', tipo:'ghost' }
+      { texto:'Conhecer o Kairós', url:'https://kairos.wsslabs.com.br', tipo:'primary' },
+      { texto:'Para academias',  url:'https://kairos.wsslabs.com.br/academias', tipo:'ghost' }
     ]
   },
 
