@@ -19,7 +19,7 @@ WSS.dados.site = {
 
   /* ---- CONTATO ---- */
   contato: {
-    email:    'wsslabs.sistemas@gmail.com',
+    email:    'contato@wsslabs.com.br',
     whatsapp: 'https://wa.me/5551994394890'   /* o número do Kairós (WSS Labs) */
   },
 
